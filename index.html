@@ -12,9 +12,11 @@
             handleClick = function () {
                 dataParag = document.querySelector('#data');
                 dataParag.innerHTML = 'waiting';
-                fetch('/.netlify/functions/helloJSON').then(res => {
-                    dataParag.innerHTML = `Data : ${res.data}`
-                })
+                fetch('/.netlify/functions/helloJSON')
+                    .then(res => res.json())
+                    .then(res => {
+                        dataParag.innerHTML = `Data : ${res.data}`
+                    })
             }
         </script>
     </body>
