@@ -7,9 +7,14 @@
         <button onclick="handleClick()">
             Let's go
         </button>
+        <p id="data">Please Click th button</p>
         <script>
             handleClick = function () {
-                console.log('yay')
+                dataParag = document.querySelector('#data');
+                dataParag.innerHTML = 'waiting';
+                fetch('/.netlify/functions/helloJSON').then(res => {
+                    dataParag.innerHTML = `Data : ${res.data}`
+                })
             }
         </script>
     </body>
